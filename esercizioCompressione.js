@@ -97,16 +97,16 @@ console.log("Compresso:", risultato);
 ////////////////////////////// 
     // DECOMPRESSIONE //
 /////////////////////////////
-let risultato = "";
-for(let i = 0; i < arrayProva.length; i++){
-  const currentChar = arrayProva[i];
-  if(typeof(currentChar) == "number"){
-    for(let j = 0; j < currentChar-1; j++){
-      risultato += arrayProva[i-1];
+let risultato = ""; //Risultato
+for(let i = 0; i < arrayProva.length; i++){ // Facciamo lo scorrimento dell'array
+  const currentChar = arrayProva[i]; //Il carattere corrente
+  if(typeof(currentChar) == "number"){ //Se è di tipo number
+    for(let j = 0; j < currentChar-1; j++){ // facciamo un ciclo che dura quanto il numero - 1
+      risultato += arrayProva[i-1]; //Ripetiamo il carattere number-1 volte
     }
   }
-  else{
-    risultato += currentChar;
+  else{ // Altrimenti
+    risultato += currentChar; //Aggiungiamo il carattere singolo
   }
 }
 
