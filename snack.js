@@ -187,4 +187,22 @@ for (let i = 0; i < counterArray.length; i++) {
 }
 
 
-    console.log(`L'elemento che appare più volte nell'array ${testArrayTwo} è ${counterArray[biggestCounterIndex][0]} che appare ${counterArray[biggestCounterIndex][1]} volte`);
+console.log(`L'elemento che appare più volte nell'array ${testArrayTwo} è ${counterArray[biggestCounterIndex][0]} che appare ${counterArray[biggestCounterIndex][1]} volte`);
+
+///// ESERCIZIO 8 /////
+
+const testArrayThree = [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8, 26, 1, -15];
+let max = 0;
+let min = testArrayThree[0];
+
+for(let i = 0; i < testArrayThree.length; i++){
+    const currentElement = testArrayThree[i];
+    if(max < currentElement){
+        max = currentElement;
+    }
+    if(min > currentElement){
+        min = currentElement;
+    }
+
+}
+console.log(`Il valore minimo nell' array ${testArrayThree} è ${min}, mentre il massimo è ${max}`);
