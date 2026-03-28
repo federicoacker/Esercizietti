@@ -1,4 +1,4 @@
-/*
+
 const snackArray = [
     "mars",
     "goleador",
@@ -133,7 +133,7 @@ for(let i = 0; i < testArray.length; i++){
 console.log(`Il valore inserito era ${valueToCheck}, nell'array ${testArray}.
 L'array con dentro tutti gli elementi diversi da quello inserito è ${responseArrayTwo}.
 L'array con dentro tutte le occorenze di ${valueToCheck} è ${responseArrayOne}`);
-*/
+
 ///// ESERCIZIO 7 /////
 
 const testArrayTwo = [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8];
