@@ -1,3 +1,4 @@
+/*
 const snackArray = [
     "mars",
     "goleador",
@@ -89,7 +90,7 @@ console.log(`Gli elementi in comune tra ${arrayOne} e ${arrayTwo} sono ${commonA
 
 ///// ESERCIZIO 5 /////
 
-const testArray = [2, "hi", 6, "ciao", 7, 8, 10, "forse"];
+const testArray = [2, "hi", 6, "ciao", 7, 8, 10, "forse", 10, 10];
 let valueToCheck = prompt("Inserisci un valore di cui vuoi controllare la frequenza nell'array");
 let counter = 0;
 
@@ -112,3 +113,78 @@ else{
 
 
 ///// ESERCIZIO 6 /////
+
+valueToCheck = prompt("Inserisci un valore che vuoi controllare sia nell'array");
+const responseArrayOne = [];
+const responseArrayTwo = [];
+
+if(!isNaN(Number(valueToCheck))){
+    valueToCheck = Number(valueToCheck);
+}
+
+for(let i = 0; i < testArray.length; i++){
+    if(valueToCheck === testArray[i]){
+        responseArrayOne.push(valueToCheck);
+    }else{
+        responseArrayTwo.push(testArray[i]);
+    }
+}
+
+console.log(`Il valore inserito era ${valueToCheck}, nell'array ${testArray}.
+L'array con dentro tutti gli elementi diversi da quello inserito è ${responseArrayTwo}.
+L'array con dentro tutte le occorenze di ${valueToCheck} è ${responseArrayOne}`);
+*/
+///// ESERCIZIO 7 /////
+
+const testArrayTwo = [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8];
+const counterArray = [];
+let counterTwo = 0;
+let differentElementFound = false;
+let biggestCounter = 0;
+let biggestCounterIndex = 0;
+
+for (let i = 0; i < testArrayTwo.length; i++) {
+    differentElementFound = false;
+    for (let j = i; j <= testArrayTwo.length && !differentElementFound; j++) {
+        if (testArrayTwo[i] === testArrayTwo[j]) {
+            counterTwo++;
+        }
+        else {
+            counterArray.push([testArrayTwo[i], counterTwo]);
+            counterTwo = 0;
+            differentElementFound = true;
+            i = j - 1;
+        }
+    }
+}
+
+for (let i = 0; i < counterArray.length; i++) {
+    let value = counterArray[i][0];
+    let count = counterArray[i][1];
+    for (let j = i + 1; j < counterArray.length; j++) {
+        if (value === counterArray[j][0]) {
+            counterArray[i][1] += counterArray[j][1];
+            counterArray.splice(j, 1);
+        }
+    }
+}
+
+for(let i = 0; i<counterArray.length; i++){
+    console.log(counterArray[i][0], counterArray[i][1]);
+}
+
+biggestCounter = counterArray[0][1];
+biggestCounterIndex = 0;
+
+for (let i = 0; i < counterArray.length; i++) {
+
+    for (let j = i+1; j < counterArray.length; j++) {
+        if (counterArray[j-1][1] < counterArray[j][1]) {
+            biggestCounter = counterArray[j][1];
+            biggestCounterIndex = j;
+        }
+    }
+}
+
+
+    console.log(`L'elemento che appare più volte nell'array ${testArrayTwo} è ${counterArray[biggestCounterIndex][0]} che appare ${counterArray[biggestCounterIndex][1]} volte`);
