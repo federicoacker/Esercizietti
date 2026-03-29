@@ -1,4 +1,4 @@
-/*
+
 const snackArray = [
     "mars",
     "goleador",
@@ -135,79 +135,88 @@ L'array con dentro tutti gli elementi diversi da quello inserito è ${responseAr
 L'array con dentro tutte le occorenze di ${valueToCheck} è ${responseArrayOne}`);
 
 ///// ESERCIZIO 7 /////
+// Variabili
+const testArrayTwo = [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8]; // Array di prova
+const counterArray = []; //Array accumulatore dei counter
+let counterTwo = 0; // Counter
+let differentElementFound = false; //Flag, se viene trovato un elemento differente
+let biggestCounter = 0; // Il counter più grande
+let biggestCounterIndex = 0; // L'indice equivalente al counter più grande
 
-const testArrayTwo = [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8];
-const counterArray = [];
-let counterTwo = 0;
-let differentElementFound = false;
-let biggestCounter = 0;
-let biggestCounterIndex = 0;
-
-for (let i = 0; i < testArrayTwo.length; i++) {
-    differentElementFound = false;
-    for (let j = i; j <= testArrayTwo.length && !differentElementFound; j++) {
-        if (testArrayTwo[i] === testArrayTwo[j]) {
-            counterTwo++;
+for (let i = 0; i < testArrayTwo.length; i++) { // Iteriamo nell'array
+    differentElementFound = false; // Settiamo la flag a false
+    for (let j = i; j <= testArrayTwo.length && !differentElementFound; j++) { // Iteriamo da j = i fino a j <= della lunghezza dell'array, controllando di non trovare un elemento differente
+        if (testArrayTwo[i] === testArrayTwo[j]) { // se il numero che stiamo controllando nel ciclo esterno, è uguale al numero nel ciclo interno
+            counterTwo++; // incrementiamo il counter
         }
-        else {
-            counterArray.push([testArrayTwo[i], counterTwo]);
-            counterTwo = 0;
-            differentElementFound = true;
-            i = j - 1;
+        else { // altrimenti
+            counterArray.push([testArrayTwo[i], counterTwo]); // pushiamo il numero del ciclo esterno, assieme al suo counter, nell'array accumulatore
+            counterTwo = 0; // resettiamo il counter a 0
+            differentElementFound = true; // settiamo la flag a true che ci farà uscire da questo ciclo
+            i = j - 1; // settiamo i a j-1 in modo da continuare il ciclo esterno dalla posizione giusta.
+        }
+    }
+}
+// A questo punto, nel nostro array ci potrebbero essere però valori duplicati, ad esempio se l'array fosse 
+//  [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8]
+// il nostro array accumulatore sarebbe:
+// [[10, 2], [15, 3], [8,7], [3, 3], [15, 5], [8, 4]]
+// Dobbiamo quindi accumulare i numeri uguali in un unico elemento e sommare i loro contatori
+
+for (let i = 0; i < counterArray.length; i++) { // Iteriamo l'array accumulatore
+    let value = counterArray[i][0]; // Variabile di supporto, il numero 
+    let count = counterArray[i][1]; // Variabile di supporto, il counter di quel numero
+    for (let j = i + 1; j < counterArray.length; j++) { // Iteriamo tutti gli elementi a destra di quello che stiamo controllando
+        if (value === counterArray[j][0]) { // se il numero è uguale al numero di un'altro valore dell'array
+            counterArray[i][1] += counterArray[j][1]; // allora sommiamo i counter
+            counterArray.splice(j, 1); // ed eliminiamo il duplicato dal nostro array accumulatore
         }
     }
 }
 
-for (let i = 0; i < counterArray.length; i++) {
-    let value = counterArray[i][0];
-    let count = counterArray[i][1];
-    for (let j = i + 1; j < counterArray.length; j++) {
-        if (value === counterArray[j][0]) {
-            counterArray[i][1] += counterArray[j][1];
-            counterArray.splice(j, 1);
-        }
-    }
-}
+// A questo punto il nostro array accumulatore sarà diventato
+// [[10, 2], [15, 8], [8, 11], [3, 3]]
 
-for(let i = 0; i<counterArray.length; i++){
-    console.log(counterArray[i][0], counterArray[i][1]);
-}
+// Check di debugging per controllare l'array accumulatore
+// for(let i = 0; i<counterArray.length; i++){
+//     console.log(counterArray[i][0], counterArray[i][1]);
+// }
 
-biggestCounter = counterArray[0][1];
-biggestCounterIndex = 0;
+biggestCounter = counterArray[0][1]; //impostiamo il biggestCounter inizialmente al counter dell'elemento 0 dell'array accumulatore
+biggestCounterIndex = 0; // impostiamo l'index a 0
 
-for (let i = 0; i < counterArray.length; i++) {
+for (let i = 0; i < counterArray.length; i++) { // iteriamo nell'array accumulatore
 
-    for (let j = i+1; j < counterArray.length; j++) {
-        if (counterArray[j-1][1] < counterArray[j][1]) {
-            biggestCounter = counterArray[j][1];
-            biggestCounterIndex = j;
+    for (let j = i+1; j < counterArray.length; j++) { // iteriamo tutti gli elementi a destra di quello corrente
+        if (counterArray[i][1] < counterArray[j][1]) { // se il counter dell'elemento i è minore del counter dell'elemento j
+            biggestCounter = counterArray[j][1]; // il counter più grande è quello di j
+            biggestCounterIndex = j; // l'indice di questo counter è j
         }
     }
 }
 
 
-console.log(`L'elemento che appare più volte nell'array ${testArrayTwo} è ${counterArray[biggestCounterIndex][0]} che appare ${counterArray[biggestCounterIndex][1]} volte`);
+console.log(`L'elemento che appare più volte nell'array ${testArrayTwo} è ${counterArray[biggestCounterIndex][0]} che appare ${counterArray[biggestCounterIndex][1]} volte`); // Logghiamo i valori
 
 ///// ESERCIZIO 8 /////
+// Variabili
+const testArrayThree = [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8, 26, 1, -15]; // Array di prova
+let max = 0; // Massimo
+let min = testArrayThree[0]; // Minimo
 
-const testArrayThree = [10, 10, 15, 15, 15, 8, 8, 8, 8, 8, 8, 8, 3, 3, 3, 15, 15, 15, 15, 15, 8, 8, 8, 8, 26, 1, -15];
-let max = 0;
-let min = testArrayThree[0];
-
-for(let i = 0; i < testArrayThree.length; i++){
-    const currentElement = testArrayThree[i];
-    if(max < currentElement){
-        max = currentElement;
+for(let i = 0; i < testArrayThree.length; i++){ // Iteriamo nell'array
+    const currentElement = testArrayThree[i]; // Variabile di supporto, il numero corrente
+    if(max < currentElement){ // se il massimo è minore del numero corrente
+        max = currentElement; // allora il massimo è il minimo corrente
     }
-    if(min > currentElement){
-        min = currentElement;
+    if(min > currentElement){ // se il minimo è maggiore del numero corrente
+        min = currentElement; // allora il minimo è il numero corrente
     }
 
 }
-console.log(`Il valore minimo nell' array ${testArrayThree} è ${min}, mentre il massimo è ${max}`);
+console.log(`Il valore minimo nell' array ${testArrayThree} è ${min}, mentre il massimo è ${max}`); // Logghiamo i valori di massimo e minimo
 
-*/
+
 ///// LAVATRICE /////
 
 // VARIABILI
