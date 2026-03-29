@@ -237,8 +237,8 @@ for (let i = 0; i < sockArray.length; i++){ // Iteriamo attraverso l'array
         socksCounted.push([currentSock, sockCounter]); // pushiamo il calzino corrente e il suo counter nell'array accumulatore
     }
 
-    sockCounter = 1; // Risettiamo il counter a 1
-    duplicateFound = false; // Risettiamo la flag a false
+    sockCounter = 1; // Resettiamo il counter a 1
+    duplicateFound = false; // Resettiamo la flag a false
 }
 
 
