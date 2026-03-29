@@ -210,42 +210,44 @@ console.log(`Il valore minimo nell' array ${testArrayThree} è ${min}, mentre il
 */
 ///// LAVATRICE /////
 
-const sockArray = ["rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "lilla", "lilla", "blu", "arancio"];
+// VARIABILI
+const sockArray = ["rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "lilla", "lilla", "blu", "arancio"]; // Array di partenza
+const socksCounted = []; // Array che accumula i calzini uguali
 
-const socksCounted = [];
-let counter = 1;
-let duplicateFound = false;
+let sockCounter = 1; // Contatore di calzini
+let duplicateFound = false; // Flag che ci dice se abbiamo trovato un duplicato nel ciclo di double-check
 
-for (let i = 0; i < sockArray.length; i++){
-    const currentSock = sockArray[i];
-    for(let j = i+1; j < sockArray.length; j++){
-        const checkedSock = sockArray[j];
-        if(checkedSock === currentSock){
-            counter++;
+for (let i = 0; i < sockArray.length; i++){ // Iteriamo attraverso l'array
+    const currentSock = sockArray[i]; // Variabile di supporto, il calzino corrente
+    for(let j = i+1; j < sockArray.length; j++){ // Iteriamo tutti i calzini a destra di quello attuale che stiamo controllando
+        const checkedSock = sockArray[j]; // Variabile di supporto, il calzino che stiamo controllando
+        if(checkedSock === currentSock){ // Se il calzino corrente è quello che stiamo controllando
+            sockCounter++; // Incrementiamo il counter
         }
     }
 
-    for(let h = 0;!duplicateFound && h < socksCounted.length; h++){
-        if(currentSock === socksCounted[h][0]){
-            duplicateFound = true;
-            continue;
+    for(let h = 0; !duplicateFound && h < socksCounted.length; h++){ // Iteriamo nell'array dove accumuliamo i calzii
+        if(currentSock === socksCounted[h][0]){ // Se il calzino corrente, appare già nell'array dei calzini accumulati
+            duplicateFound = true; // Mettiamo duplicateFound a true che ci fa uscire da questo ciclo interno
+            continue; // Skippiamo al prossimo currentSock
         }
     }
-    if(!duplicateFound){
-        socksCounted.push([currentSock, counter]);
+
+    if(!duplicateFound){ // Se non abbiamo trovato duplicati nell'array accumulatore
+        socksCounted.push([currentSock, sockCounter]); // pushiamo il calzino corrente e il suo counter nell'array accumulatore
     }
 
-    counter = 1;
-    duplicateFound = false;
+    sockCounter = 1; // Risettiamo il counter a 1
+    duplicateFound = false; // Risettiamo la flag a false
 }
 
 
-for(let i = 0; i < socksCounted.length; i++){
-    const currentSock = socksCounted[i][0];
-    const sockNumber = socksCounted[i][1];
+for(let i = 0; i < socksCounted.length; i++){ // Iteriamo nel nostro array accumulatore
+    const currentSock = socksCounted[i][0]; // Variabile di supporto, il colore del calzino
+    const sockNumber = socksCounted[i][1]; // Variabile di supporto, il counter del calzino
 
-    if(sockNumber % 2 !== 0){
-        console.log(`C'è un calzino ${currentSock} spaiato`);
+    if(sockNumber % 2 !== 0){ // Se il counter è dispari
+        console.log(`C'è un calzino ${currentSock} spaiato`); // Allora il calzino currentSock è spaiato
     }
 }
 
