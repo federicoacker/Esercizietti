@@ -1,92 +1,93 @@
+// Variabili usate in più esercizi
 
-const snackArray = [
+const snackArray = [ //Array di Snack
     "mars",
     "goleador",
     "snickers",
     "bounty",
     "chocolate"];
 
-let isValueIncluded = false
+let isValueIncluded = false //Flag per vedere se il valore è incluso
 
-const snackName = prompt("Inserisci il nome di uno snack");
+const snackName = prompt("Inserisci il nome di uno snack"); // prompt dove chiede all'utente di inserire il nome di uno snack
 
 ///// ESERCIZIO 1 /////
 
-for (let i = 0; i < snackArray.length && !isValueIncluded; i++) {
-    if (snackName === snackArray[i]) {
-        isValueIncluded = true;
+for (let i = 0; i < snackArray.length && !isValueIncluded; i++) { // Iteriamo nell'array disnack
+    if (snackName === snackArray[i]) { // Se lo snack è nell'array
+        isValueIncluded = true; // Allora mettiamo la flag a true, che ci farà uscire dall'array
     }
 }
 
-if (isValueIncluded) {
-    console.log(`Lo snack ${snackName} è nella lista`);
-}
-else{
-    console.log(`Lo snack ${snackName} non è nella lista`);
+if (isValueIncluded) { // se il valore è incluso
+    console.log(`Lo snack ${snackName} è nella lista`); // Allora lo comunichiamo all'utente
+} 
+else{ // Altrimenti
+    console.log(`Lo snack ${snackName} non è nella lista`); // Comunichiamo all'utente la mancanza dello snack nell'array
 }
 
 
 ///// ESERCIZIO 2 /////
-isValueIncluded = false;
-let i;
-for (i = 0; i < snackArray.length && !isValueIncluded; i++) {
-    if (snackName === snackArray[i]) {
-        isValueIncluded = true;
+isValueIncluded = false; // resettiamo la flag a false
+let i; // definiamo i qui in modo da conservarcela
+for (i = 0; i < snackArray.length && !isValueIncluded; i++) { // iteriamo nell'array
+    if (snackName === snackArray[i]) { // se il valore c'è
+        isValueIncluded = true; // allora la flag è vera e usciamo dal ciclo
     }
 }
-if (isValueIncluded) {
-    console.log(`Lo snack ${snackName} è presente nella lista in posizione ${i}`);
+if (isValueIncluded) { // se il valore è incluso nell'array
+    console.log(`Lo snack ${snackName} è presente nella lista in posizione ${i}`); // diciamo all'utente che lo snack c'è e in che posizione è 
 }
-else{
-    console.log(`Lo snack ${snackName} non è nella lista`);
+else{ // altrimenti
+    console.log(`Lo snack ${snackName} non è nella lista`); // gli diciamo che non c'è
 }
 
 
 ///// ESERCIZIO 3 /////
-const numbersArray = [];
-let isSomma = false;
-let somma = 0;
+const numbersArray = []; // definiamo un array di numbers
+let isSomma = false; // una flag per sapere quando l'utente avrà inserito la parola "SOMMA"
+let somma = 0; // inizializziamo la somma a 0
 
-while (!isSomma) {
-    const valueInserted = prompt("Inserisci un numero o SOMMA per fare la somma degli elementi inseriti fino ad ora");
+while (!isSomma) { //Finché l'utente non inserisce SOMMA
+    const valueInserted = prompt("Inserisci un numero o SOMMA per fare la somma degli elementi inseriti fino ad ora"); //Continuiamo a chiedergli di inserire un numero o SOMMA
 
-    if (isNaN(Number(valueInserted))) {
+    if (isNaN(Number(valueInserted))) { // Se quello che inserisce non è un numero
 
-        if (valueInserted === "SOMMA" && numbersArray.length !== 0) {
-            for (let i = 0; i < numbersArray.length; i++) {
-                somma += numbersArray[i];
+        if (valueInserted === "SOMMA" && numbersArray.length !== 0) { // Controlliamo se abbia inserito SOMMA e se la lunghezza dell'array dei numeri sia diversa da 0
+            for (let i = 0; i < numbersArray.length; i++) { // Nel caso in cui lo sia, iteriamo nell'array di numeri
+                somma += numbersArray[i]; // calcoliamo la somma
             }
-            isSomma = true;
+            isSomma = true; // settiamo la flag a true ed usciamo dal ciclo while
         }
 
-    } else {
-        numbersArray.push(Number(valueInserted));
+    } else { // altrimenti ciò che ha inserito è un numero
+        numbersArray.push(Number(valueInserted)); // Quindi lo mettiamo nell'array ma rimaniamo nel ciclo while
     }
 }
 
-if(isSomma){
-    console.log(`La somma degli elementi dell'array è ${somma}`);
+if(isSomma){ // se la flag della somma è true
+    console.log(`La somma degli elementi dell'array è ${somma}`); // restituiamo all'utente il valore della somma
 }
 
 ///// ESERCIZIO 4 /////
 
-const arrayOne = ["ciao", "hi", "come", "stai", "hello"];
-const arrayTwo = ["ciao", "come", "domani", "ieri", "oggi"];
+const arrayOne = ["ciao", "hi", "come", "stai", "hello"]; // primo array da usare per la prova
+const arrayTwo = ["ciao", "come", "domani", "ieri", "oggi"]; // secondo array da usasre per la prova
 
-const commonArray = [];
+const commonArray = []; // array dei valori in comune
 
-let isCommon = false;
-for(let i = 0; i < arrayOne.length; i++){
-    for(let j = 0; j<arrayTwo.length && !isCommon; j++){
-        if(arrayOne[i] === arrayTwo[j]){
-            commonArray.push(arrayOne[i]);
-            isCommon = true;
+let isCommon = false; // flag per vedere se l'elemento è in comune
+for(let i = 0; i < arrayOne.length; i++){ // iteriamo nel primo array
+    for(let j = 0; j<arrayTwo.length && !isCommon; j++){ // iteriamo nel secondo array, controllando anche la nostra condizione di uscita (un elemento è in comune)
+        if(arrayOne[i] === arrayTwo[j]){ // se l'elemento i del primo array è uguale all'elemento j del secondo array
+            commonArray.push(arrayOne[i]); // metti dentro l'array dei valori comuni l'elemento del primo array
+            isCommon = true; // setta la flag a true ed esci dal ciclo interno
         }
     }
-    isCommon = false;
+    isCommon = false; // ora nel ciclo esterno, risettiamo la flag a false
 }
 
-console.log(`Gli elementi in comune tra ${arrayOne} e ${arrayTwo} sono ${commonArray}`);
+console.log(`Gli elementi in comune tra ${arrayOne} e ${arrayTwo} sono ${commonArray}`); // stampiamo i risultati
 
 ///// ESERCIZIO 5 /////
 
