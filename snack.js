@@ -1,4 +1,4 @@
-
+/*
 const snackArray = [
     "mars",
     "goleador",
@@ -206,3 +206,48 @@ for(let i = 0; i < testArrayThree.length; i++){
 
 }
 console.log(`Il valore minimo nell' array ${testArrayThree} è ${min}, mentre il massimo è ${max}`);
+
+*/
+///// LAVATRICE /////
+
+const sockArray = ["rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "lilla", "lilla", "blu", "arancio"];
+
+const socksCounted = [];
+let counter = 1;
+let duplicateFound = false;
+
+for (let i = 0; i < sockArray.length; i++){
+    const currentSock = sockArray[i];
+    for(let j = i+1; j < sockArray.length; j++){
+        const checkedSock = sockArray[j];
+        if(checkedSock === currentSock){
+            counter++;
+        }
+    }
+
+    for(let h = 0;!duplicateFound && h < socksCounted.length; h++){
+        if(currentSock === socksCounted[h][0]){
+            duplicateFound = true;
+            continue;
+        }
+    }
+    if(!duplicateFound){
+        socksCounted.push([currentSock, counter]);
+    }
+
+    counter = 1;
+    duplicateFound = false;
+}
+
+
+for(let i = 0; i < socksCounted.length; i++){
+    const currentSock = socksCounted[i][0];
+    const sockNumber = socksCounted[i][1];
+
+    if(sockNumber % 2 !== 0){
+        console.log(`C'è un calzino ${currentSock} spaiato`);
+    }
+}
+
+
+
