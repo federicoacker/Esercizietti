@@ -1,5 +1,5 @@
 // Variabili usate in più esercizi
-/*
+
 const snackArray = [ //Array di Snack
     "mars",
     "goleador",
@@ -218,7 +218,7 @@ for(let i = 0; i < testArrayThree.length; i++){ // Iteriamo nell'array
 
 }
 console.log(`Il valore minimo nell' array ${testArrayThree} è ${min}, mentre il massimo è ${max}`); // Logghiamo i valori di massimo e minimo
-*/
+
 
 ///// LAVATRICE /////
 
@@ -233,7 +233,7 @@ for (let i = 0; i < sockArray.length; i++){ // Iteriamo attraverso l'array
 
     duplicateFound = false; // Resettiamo la flag a false
     const currentSock = sockArray[i]; // Variabile di supporto, il calzino corrente
-    
+
     for(let j = i+1; j < sockArray.length; j++){ // Iteriamo tutti i calzini a destra di quello attuale che stiamo controllando
         const checkedSock = sockArray[j]; // Variabile di supporto, il calzino che stiamo controllando
         if(checkedSock === currentSock){ // Se il calzino corrente è uguale a quello che stiamo controllando
