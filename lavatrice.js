@@ -44,3 +44,26 @@ for(let i = 0; i < socksCounted.length; i++){ // Iteriamo nel nostro array accum
         console.log(`C'è un calzino ${currentSock} spaiato`); // Allora il calzino currentSock è spaiato
     }
 }
+
+
+// Versione alternativa : Metodo degli array paralleli//
+const arrayCalzini = ["rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "lilla", "lilla", "blu", "arancio", "verde"]; // Array di partenza
+const coloriCalzini = []; //Array dove salveremo i colori
+const contoCalzini = []; //Array dove salveremo il conto dei calzini
+
+for(let i = 0; i < arrayCalzini.length; i++){
+    const calzinoCorrente = arrayCalzini[i]; //Il calzino corrente, nell'array di partenza
+    const indiceColoreCalzino = coloriCalzini.indexOf(calzinoCorrente); //Il suo indice, nell'array dei colori
+    if(indiceColoreCalzino === -1){ //Se l'indice è -1, allora il calzino corrente non è presente nell'array dei colori
+        coloriCalzini.push(calzinoCorrente); //Allora lo pusho dentro
+        contoCalzini.push(1); //E pusho nell'array del conto dei calzini che ce n'è uno
+    }else { //Altrimenti è presente
+        contoCalzini[indiceColoreCalzino] += 1; //Quindi incremento il conto nell'array del conto dei calzini, usando lo stesso indice dei colori
+    }
+}
+
+for(let i = 0; i < coloriCalzini.length; i++){//Itero usando la lunghezza dell'array del coloreCalzini (Che tanto è la stessa di quella del conto Calzini)
+    if(contoCalzini[i] % 2 === 1){// Se un elemento del conto ha modulo di 2 uguale a 1, allora il numero è dispari quindi c'è un calzino spaiato
+        console.log(`Il calzino ${coloriCalzini[i]} è spaiato`); //Essendo che i due array vivono in parallelo, agli stessi indici corrispondono il conto per il colore giusto, quindi comunico quali sono spaiati
+    }
+}
