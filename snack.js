@@ -86,54 +86,56 @@ for(let i = 0; i < arrayOne.length; i++){ // iteriamo nel primo array
     }
     isCommon = false; // ora nel ciclo esterno, risettiamo la flag a false
 }
-
+// in un mondo ideale anche qui andrei a fare una scrematura per togliere elementi duplicati dall'array dei valori comuni
 console.log(`Gli elementi in comune tra ${arrayOne} e ${arrayTwo} sono ${commonArray}`); // stampiamo i risultati
 
 ///// ESERCIZIO 5 /////
 
-const testArray = [2, "hi", 6, "ciao", 7, 8, 10, "forse", 10, 10];
-let valueToCheck = prompt("Inserisci un valore di cui vuoi controllare la frequenza nell'array");
-let counter = 0;
+const testArray = [2, "hi", 6, "ciao", 7, 8, 10, "forse", 10, 10]; // Array di prova
+let valueToCheck = prompt("Inserisci un valore di cui vuoi controllare la frequenza nell'array"); // Inserimento del valore di cui controllare la frequenza nell'array
+let counter = 0; // Counter
 
-if(!isNaN(Number(valueToCheck))){
-    valueToCheck = Number(valueToCheck);
+// Non sappiamo a questo punto cosa c'è nell'array quindi controlliamo se si tratta di un numero
+
+if(!isNaN(Number(valueToCheck))){ // Se provando a convertirlo in un numero, non è un NaN
+    valueToCheck = Number(valueToCheck); // Allora lo convertiamo in numero
 }
 
-for(let i = 0; i < testArray.length; i++){
-    if(testArray[i] === valueToCheck){
-        counter++;
+for(let i = 0; i < testArray.length; i++){ // Iteriamo nell'array di prova
+    if(testArray[i] === valueToCheck){ // Controlliamo se l'elemento è presente nell'array, se lo è
+        counter++; // Aumentiamo il counter
     }
 }
 
-if(counter !== 0){
-    console.log(`L'elemento ${valueToCheck} appare nell'array ${testArray} ${counter} volte`);
-}
-else{
-    console.log(`L'elemento ${valueToCheck} non appare nell'array ${testArray}`);
+if(counter !== 0){ // Se il counter è diverso da 0
+    console.log(`L'elemento ${valueToCheck} appare nell'array ${testArray} ${counter} volte`); // Comunichiamo quante volte appare l'elelemnto
+} 
+else{ // Se il counter è 0
+    console.log(`L'elemento ${valueToCheck} non appare nell'array ${testArray}`); // Comunichiamo che l'elemento non è presente nell'array
 }
 
 
 ///// ESERCIZIO 6 /////
 
-valueToCheck = prompt("Inserisci un valore che vuoi controllare sia nell'array");
-const responseArrayOne = [];
-const responseArrayTwo = [];
+valueToCheck = prompt("Inserisci un valore che vuoi controllare sia nell'array"); // Chiediamo all'utente quale valore vuole controllare sia incluso nell'array
+const responseArrayOne = []; // Creiamo un array in cui metteremo gli elementi uguali a quello inserito dall'utente
+const responseArrayTwo = []; // Creiamo un array in cui metteremo gli elementi diversi da quello inserito dall'utente
 
-if(!isNaN(Number(valueToCheck))){
-    valueToCheck = Number(valueToCheck);
+if(!isNaN(Number(valueToCheck))){ // Facciamo sempre il controllo se il valore inserito è un numero o meno
+    valueToCheck = Number(valueToCheck); // Se lo è lo convertiamo a un Number
 }
 
-for(let i = 0; i < testArray.length; i++){
-    if(valueToCheck === testArray[i]){
-        responseArrayOne.push(valueToCheck);
-    }else{
-        responseArrayTwo.push(testArray[i]);
+for(let i = 0; i < testArray.length; i++){ // Iteriamo nell'array
+    if(valueToCheck === testArray[i]){ // Se il valore è presente nell'array
+        responseArrayOne.push(valueToCheck); // Lo pushiamo nell'array degli elementi uguali a quello inserito dall'utente
+    }else{ // Altrimenti
+        responseArrayTwo.push(testArray[i]); // Pushiamo l'elemento dell'array di prova, che è diverso da quello inserito dall'utente, dentro l'array degli elementi diversi
     }
 }
 
-console.log(`Il valore inserito era ${valueToCheck}, nell'array ${testArray}.
+console.log(`Il valore inserito era ${valueToCheck}, nell'array ${testArray}. 
 L'array con dentro tutti gli elementi diversi da quello inserito è ${responseArrayTwo}.
-L'array con dentro tutte le occorenze di ${valueToCheck} è ${responseArrayOne}`);
+L'array con dentro tutte le occorenze di ${valueToCheck} è ${responseArrayOne}`); // Logghiamo il risultato in console.
 
 ///// ESERCIZIO 7 /////
 // Variabili
