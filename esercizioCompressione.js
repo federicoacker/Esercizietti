@@ -102,7 +102,7 @@ for(let i = 0; i < arrayProva.length; i++){ // Facciamo lo scorrimento dell'arra
   const currentChar = arrayProva[i]; //Il carattere corrente
   if(typeof(currentChar) == "number"){ //Se è di tipo number
     for(let j = 0; j < currentChar-1; j++){ // facciamo un ciclo che dura quanto il numero - 1
-      risultato += arrayProva[i-1]; //Ripetiamo il carattere number-1 volte
+      risultato += arrayProva[i-1]; //Ripetiamo il carattere prima nel numero che abbiamo trovato, quindi ad indice i-1 un numero di volte pari a currentChar - 1
     }
   }
   else{ // Altrimenti
