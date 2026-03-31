@@ -1,5 +1,5 @@
 function containsOnlyNumbers (stringaIniziale){ //Funzione che controlla se tutti i valori di una stringa sono numeri. 
-// Ritorna true or false, o -1 se l'argomento ricevuto non è un numero o  una stringa o è una stringa vuota.
+// Ritorna true or false, o -1 se non è possibile fare il controllo per un motivo o per un altro.
     let onlyNumbers = true; // Booleano che usiamo per controllare che siano solo numeri
     if(typeof(stringaIniziale) !== "string"){ // Se il tipo di stringaIniziale non è "string"
         if(typeof(stringaIniziale) === "number" && !isNaN(stringaIniziale)){ // Se il tipo di stringaIniziale è un number e non è NaN
