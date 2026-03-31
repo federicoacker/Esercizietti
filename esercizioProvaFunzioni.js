@@ -1,9 +1,11 @@
 function containsOnlyNumbers (stringaIniziale){ //Funzione che controlla se tutti i valori di una stringa sono numeri. 
-// Ritorna true or false, o -1 se l'argomento ricevuto non è una stringa.
+// Ritorna true or false, o -1 se l'argomento ricevuto non è un numero o  una stringa o è una stringa vuota.
     let onlyNumbers = true; // Booleano che usiamo per controllare che siano solo numeri
     if(typeof(stringaIniziale) !== "string"){ // Se il tipo di stringaIniziale non è "string"
         if(typeof(stringaIniziale) === "number" && !isNaN(stringaIniziale)){ // Se il tipo di stringaIniziale è un number e non è NaN
-            return onlyNumbers; //Allora ritorniamo true
+            return true; //Allora ritorniamo true
+        } else if(isNaN(stringaIniziale)){ // Se è NaN, non è composto da numeri
+            return false; //Allora ritorniamo false
         }
         else{ //Altrimenti è un tipo di cui non possiamo controllare che contenga solo numeri (un tipo complesso o un booleano)
             return -1; // Allora ritorniamo -1
@@ -12,19 +14,24 @@ function containsOnlyNumbers (stringaIniziale){ //Funzione che controlla se tutt
         // l'array per vedere se contiene solo numeri   
     }
     else{ // Altrimenti
-        for(let i = 0; i<stringaIniziale.length && onlyNumbers; i++){ // Itera nella stringa
-            const currentNumber = Number(stringaIniziale[i]); // il numero corrente, proviamo a convertire in Number il char della stringa
-            if(!isNaN(currentNumber)){  // Se non è NaN
-                onlyNumbers = true; // Allora setta onlyNumbers a true, questo rimarrà true finché non viene trovato un carattere che non è un number
+        if(stringaIniziale.length !== 0){ // Se la stringa non è vuota
+            for(let i = 0; i<stringaIniziale.length && onlyNumbers; i++){ // Itera nella stringa
+                const currentNumber = Number(stringaIniziale[i]); // il numero corrente, proviamo a convertire in Number il char della stringa
+                if(!isNaN(currentNumber)){  // Se non è NaN
+                    onlyNumbers = true; // Allora setta onlyNumbers a true, questo rimarrà true finché non viene trovato un carattere che non è un number
+                }
+                else{ // Se il carattere convertito in Number da NaN, allora non è un number
+                    onlyNumbers = false; // Settiamo la flag a false, che ci farà uscire dal ciclo vista la condizione
+                }
             }
-            else{ // Se il carattere convertito in Number da NaN, allora non è un number
-                onlyNumbers = false; // Settiamo la flag a false, che ci farà uscire dal ciclo vista la condizione
-            }
+        }
+        else{ // Altrimenti la stringa è vuota
+            return -1; //Allora ritorniamo -1
         }
     }
     return onlyNumbers; // A questo punto restituiamo il risultato
 }
 
-const stringa = 5;
+const stringa = "";
 
 console.log(containsOnlyNumbers(stringa));
