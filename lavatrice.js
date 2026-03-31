@@ -81,7 +81,8 @@ for(let i = 0; i<arrayCalzini2.length; i++){ // Iteriamo nell'array iniziale
         arrayContati[indiceCalzinoContato][1] += 1; // Incrementiamo il suo counter di 1
     }
 }
-for(let i = 0; i < arrayContati.length; i++){//Itero usando la lunghezza dell'array dei calziniContati
+for(let i = 0; i < arrayContati.length; i++){ //Itero usando la lunghezza dell'array dei calziniContati
     if(arrayContati[i][1] % 2 === 1){// Se il counter dei colori è dispari
         console.log(`Il calzino ${arrayContati[i][0]} è spaiato`); //Comunica quali calzini sono spaiati
+    }
 }
