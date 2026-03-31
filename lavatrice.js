@@ -72,17 +72,16 @@ for(let i = 0; i < coloriCalzini.length; i++){//Itero usando la lunghezza dell'a
 const arrayCalzini2 = ["rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "lilla", "lilla", "blu", "arancio", "verde", "verde"]; // Array di partenza
 const arrayContati = [] //Array che accumula i calzini, contandoli
 
-for(let i = 0; i<arrayCalzini2.length; i++){
-    const calzinoCorrente = arrayCalzini2[i];
-    const indiceCalzinoContato = arrayContati.findIndex(arrayInterno => arrayInterno[0] === calzinoCorrente);
-    if(indiceCalzinoContato === -1){
-        arrayContati.push([calzinoCorrente, 1]);
-    }else{
-        arrayContati[indiceCalzinoContato][1] += 1;
+for(let i = 0; i<arrayCalzini2.length; i++){ // Iteriamo nell'array iniziale
+    const calzinoCorrente = arrayCalzini2[i]; // Salviamo il calzino corrente
+    const indiceCalzinoContato = arrayContati.findIndex(arrayInterno => arrayInterno[0] === calzinoCorrente); // Salviamo qual è l'indice del calzino corrente nell'array di quelli contati
+    if(indiceCalzinoContato === -1){ // Se questo indice è -1 allora il calzino corrente non era presente nell'array dei calzini contati
+        arrayContati.push([calzinoCorrente, 1]); // Lo pushiamo con il suo counter a 1
+    }else{ // Altrimenti era presente
+        arrayContati[indiceCalzinoContato][1] += 1; // Incrementiamo il suo counter di 1
     }
 }
-for(let i = 0; i < arrayContati.length; i++){//Itero usando la lunghezza dell'array del coloreCalzini (Che tanto è la stessa di quella del conto Calzini)
-    if(arrayContati[i][1] % 2 === 1){// Se un elemento del conto ha modulo di 2 uguale a 1, allora il numero è dispari quindi c'è un calzino spaiato
-        console.log(`Il calzino ${arrayContati[i][0]} è spaiato`); //Essendo che i due array vivono in parallelo, agli stessi indici corrispondono il conto per il colore giusto, quindi comunico quali sono spaiati
-    }
+for(let i = 0; i < arrayContati.length; i++){//Itero usando la lunghezza dell'array dei calziniContati
+    if(arrayContati[i][1] % 2 === 1){// Se il counter dei colori è dispari
+        console.log(`Il calzino ${arrayContati[i][0]} è spaiato`); //Comunica quali calzini sono spaiati
 }
