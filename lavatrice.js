@@ -69,7 +69,7 @@ for(let i = 0; i < coloriCalzini.length; i++){//Itero usando la lunghezza dell'a
 }
 */
 //Versione iniziale con logica di controllo cambiata
-const arrayCalzini2 = ["rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "lilla", "lilla", "blu", "arancio", "verde"]; // Array di partenza
+const arrayCalzini2 = ["rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "blu", "verde", "giallo", "rosso", "lilla", "lilla", "blu", "arancio", "verde", "verde"]; // Array di partenza
 const arrayContati = [] //Array che accumula i calzini, contandoli
 
 for(let i = 0; i<arrayCalzini2.length; i++){
